@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Tooling : MonoBehaviour
 {
-    [MenuItem("GameObject/Empilhar")]
+    [MenuItem("GameObject/Empilhar",priority = 0)]
     public static void Empilhar(MenuCommand menuCommand)
     {
         float z_transform = 0;
@@ -20,5 +20,16 @@ public class Tooling : MonoBehaviour
             }
         }
 
+    }
+    [MenuItem("GameObject/Send to last Position %l", priority = 1)]
+    public static void SendToLastPosInHierarchy(MenuCommand menuCommand)
+    {
+        if(Selection.objects.Length > 0)
+        {
+            foreach (GameObject obj in Selection.objects)
+            {
+                obj.transform.parent = null;
+            }
+        }
     }
 }
